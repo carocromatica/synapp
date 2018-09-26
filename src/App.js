@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter} from 'react-router-dom'; // tengo entendido que simula una navegacion html5
+import NavBar from './Components/navbars/Navbar'
 
 
 class App extends Component {
@@ -11,6 +12,7 @@ class App extends Component {
         <h1>
          Cuarto DEPLOY holi holi jjjj
         </h1>
+        <Navbar />
         </BrowserRouter>
         {/* FIN COMPONENTES */}
       </div>
