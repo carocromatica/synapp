@@ -8,7 +8,7 @@ class App extends Component {
     return (
       <div className="App">
       {/* AGREGAR COMPONENTES AQUI  */}
-       <BrowserRouter>
+       <BrowserRouter basename={process.env.PUBLIC_URL}>
         
    <NavBar />
    <h2>quinto deploy</h2>
