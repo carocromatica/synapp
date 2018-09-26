@@ -8,11 +8,19 @@ class App extends Component {
     return (
       <div className="App">
       {/* AGREGAR COMPONENTES AQUI  */}
-       <BrowserRouter basename={process.env.PUBLIC_URL}>
-        
+       <div>
+       <BrowserRouter>
+      
+        <div>
    <NavBar />
-   <h2>quinto deploy</h2>
+   </div>
         </BrowserRouter>
+</div>
+        <div>
+        <h1>
+         sexto DEPLOY holi holi jjjj
+        </h1>
+        </div>
         {/* FIN COMPONENTES */}
       </div>
     );
