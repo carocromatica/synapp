@@ -12,7 +12,7 @@ class App extends Component {
         <h1>
          Cuarto DEPLOY holi holi jjjj
         </h1>
-        <Navbar />
+        <NavBar />
         </BrowserRouter>
         {/* FIN COMPONENTES */}
       </div>
