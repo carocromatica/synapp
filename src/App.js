@@ -9,10 +9,9 @@ class App extends Component {
       <div className="App">
       {/* AGREGAR COMPONENTES AQUI  */}
        <BrowserRouter>
-        <h1>
-         Cuarto DEPLOY holi holi jjjj
-        </h1>
-   
+        
+   <NavBar />
+   <h2>quinto deploy</h2>
         </BrowserRouter>
         {/* FIN COMPONENTES */}
       </div>
