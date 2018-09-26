@@ -1,5 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import Home from '../../Components/dashboard/Home'
 
 
 const NavBar = () =>{
@@ -7,7 +8,10 @@ const NavBar = () =>{
   return(
     <nav ClassName="nav-wrapper blue-grey darken-4">
       <div ClassName="container">
-      <Link to='/'>soy un link</Link>
+      <Router>
+      <Link to='home'>soy un link</Link>
+      <Route exact path="/home" component={Home} />
+      </Router>
       </div>
     </nav>
   )
