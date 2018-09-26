@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import AuthWhithGoogle from './Components/AuthWhithGoogle';
-import AuthWithEmailAndPassword from './Components/AuthWithEmailAndPassword';
-import RegisterWithFirebase from './Components/RegisterWithFirebase';
 import { BrowserRouter as Router, Route, Link, Redirect } from "react-router-dom";
 import Home from './Pages/Home';
+import Register from './Pages/Register'
+import Login from './Pages/Login'
 import firebase from 'firebase/app'
 import 'firebase/auth'
 import 'firebase/firestore'
@@ -55,9 +54,19 @@ import 'firebase/storage'
       return(
       // si no está logueado
       <div>
-            <AuthWhithGoogle />
-            <AuthWithEmailAndPassword />
-            <RegisterWithFirebase />
+        <div>
+        <Router>
+            <div>
+              <Link to="/register" className="link">Registro </Link>
+              <Link to="/" className="link"> Inicio</Link>
+              <Link to="/login" className="link"> Login</Link>
+              <Route path="/login" component={Login} />
+              <Route path="/register" component={Register} />
+              <Route path="/r" component={App} />
+            </div>
+          </Router>
+        </div>
+           
       </div>
       );
   }
@@ -66,7 +75,6 @@ import 'firebase/storage'
   render() {
     return (
       <div className="App">
-        
         <h1>{this.state.users}</h1> 
         <div className=''>
         </div>
