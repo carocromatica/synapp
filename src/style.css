@@ -12,9 +12,12 @@ body {
   margin-top:10px;
 }
 
+.friendCard{
+  padding-left: 25px;
+}
+
 .hrz{ /*lista horizontal iconos */
   display: inline;
-  color:white;
   padding: 5px;
 }
 
@@ -22,6 +25,9 @@ body {
   font-size: 2em;
   margin-top:15px; 
 }
+
+.userNav {
+  color: white;}
 
 @media only screen and (max-width: 600px) {
  
