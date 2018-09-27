@@ -1,5 +1,5 @@
 import React from 'react';
-
+import App2 from '../Components/App2';
 import {  NavLink, } from "react-router-dom";
  
 const Home = () => (
@@ -19,7 +19,7 @@ const Home = () => (
     <h2> MURO</h2>
     <h2>HOLA SOY COMENTARIOS</h2>
   
-
+<App2 />
 
  
     
