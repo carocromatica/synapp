@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link, Redirect,Switch } from "react-router-dom";
 import Home from './Pages/Home';
 import Friends from './Pages/Friends';
+import Events from './Pages/Events';
+import Games from './Pages/Games';
 import Register from './Pages/Register'
 import Login from './Pages/Login'
 import firebase from 'firebase/app'
@@ -51,6 +53,8 @@ import 'firebase/storage'
             <div>
             <Route path="/home" component={Home} />
             <Route path='/friends' component={Friends} />
+            <Route path='/events' component={Events} />
+            <Route path='/games' component={Games} />
 
             <Redirect to="/home" className="link">Profile</Redirect>
             </div>
