@@ -1,8 +1,6 @@
 import React from 'react';
-
-
 import IconNav from '../Components/Navs/IconNav';
- 
+
 const Home = () => (
   <div className="Container">
     <div className="row">
@@ -15,5 +13,4 @@ const Home = () => (
     </div>
   </div>
 )
-
 export default Home; 

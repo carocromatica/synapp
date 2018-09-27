@@ -9,13 +9,21 @@ body {
 /* estilos por orden alfabetico */
 .avatar{
   border-radius: 50%;
+  margin-top:10px;
 }
+
 .hrz{ /*lista horizontal iconos */
-  float: left;
   display: inline;
+  color:white;
+  padding: 5px;
 }
 
 .navIcons{
   font-size: 2em;
   margin-top:15px; 
+}
+
+@media only screen and (max-width: 600px) {
+ 
+  .userNav {display: none;}
 }

@@ -45,25 +45,24 @@ class App extends Component {
       return (
         <div>
           <div className="nav-wrapper blue-grey darken-4">
-          <div className="container">
-          <LogoMini />
-
-          <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li className="hrz"><button onClick={this.handleLogout}>Salir</button></li>
-        <li className="hrz"><img width='40' className="avatar" src={this.state.user.photoURL} alt={this.state.user.displayName} /> 
-        {this.state.user.displayName}</li>
-      </ul>   
-          </div>
+            <div className="container">
+              <LogoMini />
+              <div class="right">
+                <li className="hrz userNav"><img width='35' className="avatar" src={this.state.user.photoURL} alt={this.state.user.displayName} /> </li>
+                <li className="hrz userNav">{this.state.user.displayName}</li>
+                <li className="hrz"><button onClick={this.handleLogout}>Salir</button></li>
+              </div>
+            </div>
           </div>
           <Router>
-              <div>
-                <Route path="/home" component={Home} />
-                <Route path='/friends' component={Friends} />
-                <Route path='/events' component={Events} />
-                <Route path='/games' component={Games} />
-                <Redirect to="/home" className="link">Profile</Redirect>
-              </div>
-            </Router>
+            <div>
+              <Route path="/home" component={Home} />
+              <Route path='/friends' component={Friends} />
+              <Route path='/events' component={Events} />
+              <Route path='/games' component={Games} />
+              <Redirect to="/home" className="link">Profile</Redirect>
+            </div>
+          </Router>
         </div>
       );
     } else {
