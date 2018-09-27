@@ -6,11 +6,12 @@ import Events from './Pages/Events';
 import Games from './Pages/Games';
 import Register from './Pages/Register'
 import Login from './Pages/Login'
+import LogoMini from './Components/Logo/Logo'
 import firebase from 'firebase/app'
 import 'firebase/auth'
 import 'firebase/firestore'
 import 'firebase/storage'
-
+import '../src/style.css'
 
 class App extends Component {
   constructor() {
@@ -43,10 +44,16 @@ class App extends Component {
     if (this.state.user) {
       return (
         <div>
-          <div className="card-panel teal lighten-2">
-            <img width='100' src={this.state.user.photoURL} alt={this.state.user.displayName} />
-            <p>Hola {this.state.user.displayName}!</p>
-            <button onClick={this.handleLogout}>Salir</button>
+          <div className="nav-wrapper blue-grey darken-4">
+          <div className="container">
+          <LogoMini />
+
+          <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li className="hrz"><button onClick={this.handleLogout}>Salir</button></li>
+        <li className="hrz"><img width='40' className="avatar" src={this.state.user.photoURL} alt={this.state.user.displayName} /> 
+        {this.state.user.displayName}</li>
+      </ul>   
+          </div>
           </div>
           <Router>
               <div>
