@@ -40,10 +40,6 @@ renderLoginButtonE () {
               <img width='100' src={this.state.user.photoURL} alt={this.state.user.displayName}/>
               <p>Hola holi {this.state.user.displayName}!</p>
               <p>Hola holi {this.state.user.emailValue}!</p>
-
-
-             
-
           </div>
 
       );
