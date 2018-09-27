@@ -16,7 +16,7 @@ import 'firebase/storage'
    this.state = {  
      user: null
   };   
-
+  this.handleAuthWithFacebook = this.handleAuthWithFacebook.bind(this);
   this.handleLogout = this.handleLogout.bind(this);
   this.renderLoginButton = this.renderLoginButton.bind(this);
  }
@@ -24,7 +24,12 @@ import 'firebase/storage'
   firebase.auth().onAuthStateChanged(user => {
       this.setState({user});
   });
-
+}
+   handleAuthWithFacebook () {
+    const provider = new firebase.auth.FacebookAuthProvider();
+     firebase.auth().signInWithPopup(provider)
+        .then(result => console.log(`${result.user.email} ha iniciado sesión`))
+        .catch(error => console.log(`error ${error.code}: ${error.message}`));
  }
  handleLogout(){
   firebase.auth().signOut()
@@ -41,22 +46,14 @@ import 'firebase/storage'
           <button onClick={this.handleLogout}>Salir</button>
 
           <div>
-
- <Router>
-        <div className="App">
-          <Switch>
-           
-            <Route path='/friends' component={Friends} />
-            <Route path="/home" component={Home} />
-          </Switch>
-        </div>
-      </Router>
-
 </div>
           <Router>
             <div>
-              <Redirect to="/home" className="link">Profile</Redirect>
+            <Route path="/home" component={Home} />
+            <Route path='/friends' component={Friends} />
             
+            <Redirect to="/home" className="link">Profile</Redirect>
+        
             </div>
           </Router>
         </div>
