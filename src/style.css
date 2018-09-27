@@ -6,10 +6,16 @@ body {
   min-height: 100%;
 }
 
+/* estilos por orden alfabetico */
 .avatar{
   border-radius: 50%;
 }
-.hrz{
+.hrz{ /*lista horizontal iconos */
   float: left;
   display: inline;
+}
+
+.navIcons{
+  font-size: 2em;
+  margin-top:15px; 
 }

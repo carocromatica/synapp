@@ -1,13 +1,43 @@
 import React from 'react'
-import {  NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const IconNav = () => {
   return (
-   <div className="card white">
-       <NavLink to='/home'> <i className="fas fa-home blue-text text-darken-2"></i>Inicio</NavLink>
-       <NavLink to='/friends'> <i className="fas fa-user-friends blue-text text-darken-2"></i>amigos</NavLink>
-       <NavLink to='/events'> <i className="far fa-calendar-alt blue-text text-darken-2"></i>eventos</NavLink>
-       <NavLink to='/games'> <i className="fas fa-trophy blue-text text-darken-2"></i>juegos</NavLink>
+    <div className="card white">
+      <div className="row">
+        <div className="col s3 center-align">
+          <div>
+            <NavLink to='/home'> <i className="navIcons fas fa-home blue-grey-text darken-4"></i></NavLink>
+          </div>
+          <div>
+            <NavLink to='/home'>Inicio</NavLink>
+          </div>
+        </div>
+        <div className="col s3 center-align">
+          <div>
+            <NavLink to='/friends'> <i className="navIcons fas fa-user-friends blue-grey-text darken-4"></i></NavLink>
+          </div>
+          <div>
+            <NavLink to='/friends'>Amigos</NavLink>
+          </div>
+        </div>
+        <div className="col s3 center-align">
+          <div>
+            <NavLink to='/events'> <i className="navIcons fas fa-calendar-alt blue-grey-text darken-4"></i></NavLink>
+            </div>
+          <div>
+            <NavLink to='/events'>Eventos</NavLink>
+          </div>
+        </div>
+        <div className="col s3 center-align">
+        <div>
+          <NavLink to='/games'> <i className="navIcons fas fa-trophy blue-grey-text darken-4"></i></NavLink>
+          </div>
+          <div>
+          <NavLink to='/games'>Desafíos</NavLink>
+        </div>
+      </div>
+    </div>
     </div>
   )
 }
