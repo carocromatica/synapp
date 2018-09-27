@@ -1,6 +1,7 @@
 import React from 'react';
 
 import IconNav from '../Components/Navs/IconNav';
+import Friendlist from '../Components/misc/Friendlist'
  
 const Friends = () => (
   <div>
@@ -8,7 +9,7 @@ const Friends = () => (
       <IconNav />
     <h2> amigos </h2>
     
-
+<Friendlist />
   </div>
 )
 

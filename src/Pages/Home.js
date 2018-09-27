@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {  NavLink, } from "react-router-dom";
+
 import IconNav from '../Components/Navs/IconNav';
  
 const Home = () => (
