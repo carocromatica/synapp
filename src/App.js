@@ -51,9 +51,8 @@ import 'firebase/storage'
             <div>
             <Route path="/home" component={Home} />
             <Route path='/friends' component={Friends} />
-            
+
             <Redirect to="/home" className="link">Profile</Redirect>
-        
             </div>
           </Router>
         </div>
