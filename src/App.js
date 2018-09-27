@@ -1,12 +1,16 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Link, Redirect } from "react-router-dom";
+import { BrowserRouter as Router, Route, Link, Redirect,Switch } from "react-router-dom";
 import Home from './Pages/Home';
+import Friends from './Pages/Friends';
+import Events from './Pages/Events';
+import Games from './Pages/Games';
 import Register from './Pages/Register'
 import Login from './Pages/Login'
 import firebase from 'firebase/app'
 import 'firebase/auth'
 import 'firebase/firestore'
 import 'firebase/storage'
+
 
  class App extends Component {
  constructor() { 
@@ -42,10 +46,17 @@ import 'firebase/storage'
           <img width='100' src={this.state.user.photoURL} alt={this.state.user.displayName} />
           <p>Hola {this.state.user.displayName}!</p>
           <button onClick={this.handleLogout}>Salir</button>
+
+          <div>
+</div>
           <Router>
             <div>
-              <Redirect to="/home" className="link">Profile</Redirect>
-              <Route path="/home" component={Home} />
+            <Route path="/home" component={Home} />
+            <Route path='/friends' component={Friends} />
+            <Route path='/events' component={Events} />
+            <Route path='/games' component={Games} />
+
+            <Redirect to="/home" className="link">Profile</Redirect>
             </div>
           </Router>
         </div>
