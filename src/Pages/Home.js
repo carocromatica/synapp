@@ -6,7 +6,6 @@ import IconNav from '../Components/Navs/IconNav';
 const Home = () => (
   <div className="Container">
 
- 
 
 <div>
 
