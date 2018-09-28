@@ -1,5 +1,6 @@
 import React from 'react';
 import IconNav from '../Components/Navs/IconNav'
+import PostAEvent from '../Components/eventPost/PostAEvent'
 
 const Home = () => (
   <div className="Container">
@@ -8,6 +9,7 @@ const Home = () => (
         <IconNav />
         <div className="card white">
           <h2>Events</h2>
+        <PostAEvent />
         </div>
       </div>
     </div>

@@ -6,3 +6,4 @@ export const DB_CONFIG ={
     storageBucket: "synapse-react-on-fire.appspot.com",
     messagingSenderId: "599883791971"
   }
+ 
