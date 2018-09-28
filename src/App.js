@@ -6,11 +6,13 @@ import Events from './Pages/Events';
 import Games from './Pages/Games';
 import Register from './Pages/Register'
 import Login from './Pages/Login'
+import LogoMini from './Components/Logo/Logo'
 import firebase from 'firebase/app'
+import logo from './Pages/logo.png'
 import 'firebase/auth'
 import 'firebase/firestore'
 import 'firebase/storage'
-
+import '../src/style.css'
 
 class App extends Component {
   constructor() {
@@ -43,35 +45,50 @@ class App extends Component {
     if (this.state.user) {
       return (
         <div>
-          <div className="card-panel teal lighten-2">
-            <img width='100' src={this.state.user.photoURL} alt={this.state.user.displayName} />
-            <p>Hola {this.state.user.displayName}!</p>
-            <button onClick={this.handleLogout}>Salir</button>
+          <div className="nav-wrapper blue-grey darken-4">
+            <div className="container">
+              <LogoMini />
+              <div class="right">
+                <li className="hrz userNav"><img width='35' className="avatar" src={this.state.user.photoURL} alt={this.state.user.displayName} /> </li>
+                <li className="hrz userNav">{this.state.user.displayName}</li>
+                <li className="hrz"><button onClick={this.handleLogout}>Salir</button></li>
+              </div>
+            </div>
           </div>
           <Router>
-              <div>
-                <Route path="/home" component={Home} />
-                <Route path='/friends' component={Friends} />
-                <Route path='/events' component={Events} />
-                <Route path='/games' component={Games} />
-                <Redirect to="/home" className="link">Profile</Redirect>
-              </div>
-            </Router>
+            <div>
+              <Route path="/home" component={Home} />
+              <Route path='/friends' component={Friends} />
+              <Route path='/events' component={Events} />
+              <Route path='/games' component={Games} />
+              <Redirect to="/home" className="link">Profile</Redirect>
+            </div>
+          </Router>
         </div>
       );
     } else {
       return (
         <div>
-           <Router>
-              <div>
-                <Link to="/register" className="link">Registro </Link>
-                <Link to="/" className="link"> Inicio</Link>
-                <Link to="/login" className="link"> Login</Link>
-                <Route path="/login" component={Login} />
-                <Route path="/register" component={Register} />
-                <Route path="/r" component={App} />
+          <div class="container">
+            <div className="row">
+              <div className="col s12 m4 offset-m4">
+                <div className="card white">
+                  <img src={logo} className="logoSign" alt="logo" height="175" />
+                  <p>Bienvenido a Synappse, Red Social del conocimiento</p>
+                  <Router>
+                    <div>
+                      <Link to="/register" className="link">Registro </Link>
+                      <Link to="/" className="link"> Inicio</Link>
+                      <Link to="/login" className="link"> Login</Link>
+                      <Route path="/login" component={Login} />
+                      <Route path="/register" component={Register} />
+                      <Route path="/r" component={App} />
+                    </div>
+                  </Router>
+                </div>
               </div>
-            </Router>
+            </div>
+          </div>
         </div>
       );
     }

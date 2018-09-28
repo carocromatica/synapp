@@ -38,22 +38,21 @@ renderLoginButtonE () {
       return (
           <div>
               <img width='100' src={this.state.user.photoURL} alt={this.state.user.displayName}/>
-              <p>Hola holi {this.state.user.displayName}!</p>
-              <p>Hola holi {this.state.user.emailValue}!</p>
+              <p>{this.state.user.displayName}!</p>
+              <p>{this.state.user.emailValue}!</p>
           </div>
 
       );
   }else{
       return(
       // si no está logueado
-      <div>
+        <div className="signForm">
           <form action="" className="white" >
-      <input type='email' id='email' placeholder='email'/>
-        <input type='password' id='password' placeholder='password'/>
-        
-        </form>
-        <button className="btn pink lighten-1 z-depth-0" onClick={this.handleAuthWithEmailAndPassword}>Ingresar</button>
-      </div>
+            <input type='email' id='email' placeholder='email' />
+            <input type='password' id='password' placeholder='Contraseña' />
+          </form>
+          <button className="btn teal darken-1" onClick={this.handleAuthWithEmailAndPassword}>Ingresar</button>
+        </div>
       );
   }
 }
@@ -62,7 +61,7 @@ renderLoginButtonE () {
   render() {
     return (
       <div className="App">
-          <h4>Login con email y contraseña</h4>
+
         {this.renderLoginButtonE()}
       </div>
     );

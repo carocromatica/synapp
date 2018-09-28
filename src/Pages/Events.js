@@ -1,27 +1,16 @@
 import React from 'react';
 import IconNav from '../Components/Navs/IconNav'
 
-
- 
 const Home = () => (
-  <div>
-    <div>
-
-       <IconNav/>
-     
+  <div className="Container">
+    <div className="row">
+      <div className="col s12 m4 offset-m4">
+        <IconNav />
+        <div className="card white">
+          <h2>Events</h2>
+        </div>
+      </div>
     </div>
-
-<div>
-
-</div>
- 
-    <h2>eventos</h2>
-  
-
-
- 
-    
-
   </div>
 )
 
