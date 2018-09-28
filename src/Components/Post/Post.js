@@ -28,6 +28,16 @@ class Post extends Component{
 
         let datas = this.state.datas;
         let publication = this.refs.publication.value;
+        var HoraActual = new Date(); 
+        let year = HoraActual.getFullYear().toString();
+        let month = HoraActual.getMonth().toString();
+        let dia = HoraActual.getDate().toString();
+        let hora = HoraActual.getHours().toString(); // rescatamos la hora
+        let minutos = HoraActual.getMinutes().toString(); // y los minutos
+
+        if (minutos < 10) { // cuando son las 15:06 el js muestra 15:6, este if es para que se vea el 0
+            minutos = "0" + minutos;
+          }
 
         if (publication===""){
             alert('escribe un mensaje')
@@ -35,7 +45,7 @@ class Post extends Component{
 
         if(this.state) {
             let data = {
-                publication
+                publication,dia,month,year,hora,minutos
             }
             datas.unshift(data);
 
@@ -75,8 +85,11 @@ deletePost = (i) => {
                 <div>
                     {datas.map((data, i) =>
                         <div key={i} className="card white">
+                        <div>
                             Carolina Torres Durán
-                         {data.name}
+                            </div>
+                            <div> {data.dia}/ {data.month} /{data.year} a las {data.hora}:{data.minutos}</div>
+                        <div> {data.publication}</div>
                             <button onClick={() => this.deletePost(i)} className='myListButton'>eliminar</button>
                         </div>
                     )}

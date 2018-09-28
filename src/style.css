@@ -31,6 +31,14 @@ body {
   margin-top:15px; 
 }
 
+.postName{
+  display: block;
+}
+
+.postContent{
+  display:block;
+}
+
 .signForm{
   padding: 20px;
 }
