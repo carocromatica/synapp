@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import firebase from 'firebase';
-import LikeButton from '../../Components/misc/Likes'
+import CheckButton from '../../Components/misc/check'
 
 class PostAEvent extends Component {
 
@@ -28,33 +28,30 @@ class PostAEvent extends Component {
         console.log('try');
 
         let datas = this.state.datas;
-        let publication = this.refs.publication.value;
-        var HoraActual = new Date();
-        let year = HoraActual.getFullYear().toString();
-        let month = HoraActual.getMonth().toString();
-        let dia = HoraActual.getDate().toString();
-        let hora = HoraActual.getHours().toString(); // rescatamos la hora
-        let minutos = HoraActual.getMinutes().toString(); // y los minutos
+        let title = this.refs.tituloEvento.value;
+        let place = this.refs.lugarEvento.value;
+        let day = this.refs.fechaEvento.value;
+        let event = this.refs.descripcion.value;
+        
 
-        if (minutos < 10) { 
-            minutos = "0" + minutos;
-        }
-
-        if (publication === "") {
+        if (event === "") {
            return alert('escribe un mensaje')
             
         }
 
         if (this.state) {
             let data = {
-                publication, dia, month, year, hora, minutos
+                title,place,day,event
             }
             datas.unshift(data);
             
             
         } else {
             let index = this.state.index;
-            datas[index].publication = publication;   
+            datas[index].title = title;   
+            datas[index].place = place;
+            datas[index].day = day;
+            datas[index].event = event;
         }
 
         this.setState({
@@ -62,7 +59,6 @@ class PostAEvent extends Component {
             
         });
         
-
         this.refs.formulario.reset();
 
     }
@@ -81,9 +77,12 @@ class PostAEvent extends Component {
         return (
             <div>
                 <div className='card White'>
-                    <h2>{this.state.title}</h2>
+                    <h5 className="signForm">Publicar un Evento</h5>
                     <form ref='formulario' className='signForm'>
-                        <input type='text' ref='publication' placeholder='¿Qué estás pensando?'/>
+                        <input type='text' ref='tituloEvento' placeholder='Nombre Evento'/>
+                        <input type='text' ref='lugarEvento' placeholder='¿Dónde es?'/>
+                        <input type='date' ref='fechaEvento' label="¿Cuándo es?"/>
+                        <input type='text' ref='descripcion' placeholder='¿De que trata?'/>
                         <button onClick={(e) => this.addPost(e)} className='myButton'>Enviar</button>
                     </form>
                 </div>
@@ -91,14 +90,14 @@ class PostAEvent extends Component {
                     {datas.map((data, i) =>
                         <div key={i} className="card white signForm">
                             <div className="card-title">
-                                Carolina Torres Durán
+                            {data.title}
                             </div>
-                            <div className="postdate"> {data.dia}/ {data.month} /{data.year} a las {data.hora}:{data.minutos}</div>
-                            <div className="postcontent"> {data.publication}</div>
+                            <div className="postdate"> Dónde: {data.place}/ Cuándo: {data.day}</div>
+                            <div className="postcontent"> {data.event}</div>
                             <div className="row">
                             <hr />
                                 <div className="col s6">
-                                    <LikeButton />
+                                    <CheckButton />
                                 </div>
                                 <div className="col s6 right-align">
                                     <button onClick={() => this.deletePost(i)}><i class="far fa-trash-alt"></i></button>
