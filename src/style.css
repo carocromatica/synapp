@@ -31,12 +31,12 @@ body {
   margin-top:15px; 
 }
 
-.postName{
-  display: block;
+.postcontent{
+  padding: 15px 0 15px 0px;
 }
 
-.postContent{
-  display:block;
+.postdate{
+  color: gray;
 }
 
 .signForm{
