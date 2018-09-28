@@ -74,7 +74,7 @@ class App extends Component {
               <div className="col s12 m4 offset-m4">
                 <div className="card white">
                   <img src={logo} className="logoSign" alt="logo" height="175" />
-           
+          <p>Bienvenido a Synappse, Red Social del conocimiento</p> 
           <Router>
             <div>
               <Link to="/register" className="link">Registro </Link>
