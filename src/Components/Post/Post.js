@@ -16,13 +16,11 @@ class Post extends Component{
         });
       }
     renderUser (){
-
         if (this.state.user) {
            return(
                <div>{this.state.user.displayName}</div>
            )
         };
-       
     }
     addPost = (e) => {
         e.preventDefault();
@@ -47,10 +45,10 @@ class Post extends Component{
         }
 
         this.setState({
-            datas: datas,
+            datas: datas
         });
 
-        this.refs.myForm.reset();
+        this.refs.formulario.reset();
 
     }
 
@@ -66,21 +64,23 @@ deletePost = (i) => {
     render() {
         let datas = this.state.datas;
         return(
-            <div className='App'>
-                <h2>{this.state.title}</h2>
-                <form ref='myForm' className='myForm'>
-                    <input type='text' ref='publication' placeholder='título' className='formField' />
-                    <button onClick={(e)=>this.addPost(e)} className='myButton'>Enviar</button>
-                </form>
-                <pre>
+            <div>
+                <div className='card White'>
+                    <h2>{this.state.title}</h2>
+                    <form ref='formulario' className='myForm'>
+                        <input type='text' ref='publication' placeholder='título' className='formField' />
+                        <button onClick={(e) => this.addPost(e)} className='myButton'>Enviar</button>
+                    </form>
+                </div>
+                <div>
                     {datas.map((data, i) =>
-                    <li key={i} className='myList'>
-                    soy caro
+                        <div key={i} className="card white">
+                            Carolina Torres Durán
                          {data.name}
-                        <button onClick={()=>this.deletePost(i)} className='myListButton'>eliminar</button>
-                    </li>
+                            <button onClick={() => this.deletePost(i)} className='myListButton'>eliminar</button>
+                        </div>
                     )}
-                </pre>
+                </div>
             </div>
         );
     }  
