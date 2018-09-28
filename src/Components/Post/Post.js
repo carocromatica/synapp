@@ -1,35 +1,97 @@
 import React, { Component } from 'react';
-//import './Note.css';
-import PropTypes from 'prop-types';
+//import './Post.css';
+
 
 class Post extends Component{
 
-    constructor(props){
+    constructor(props) {
         super(props);
-        this.postContent = props.postContent; 
-        this.postId = props.postId; 
-        this.handleRemovePost = this.handleRemovePost.bind(this);
+        this.state = {
+            title: 'Comparte tu conocimiento',
+            act: 0,
+            index: '',
+            datas: []
+        }
     }
 
-    handleRemovePost(id){
-        this.props.removePost(id);
+    componentDidMount(){
+        this.refs.name.focus();
     }
 
-    render(){
-        return(
-            <div className="post fade-in">
-                <span className="closebtn" 
-                      onClick={() => this.handleRemovePost(this.postId)}>
-                      &times;
-                </span>
-                <p className="postContent">{ this.postContent }</p>
-            </div>
-        )
+    fSubmit = (e) => {
+        e.preventDefault();
+        console.log('try');
+
+        let datas = this.state.datas;
+        let name = this.refs.name.value;
+        let address = this.refs.address.value;
+
+        if(this.state.act === 0) {
+            let data = {
+                name, address
+            }
+            datas.push(data);
+        }else{
+            let index = this.state.index;
+            datas[index].name = name;
+            datas[index].address = address;
+        }
+
+        this.setState({
+            datas: datas,
+            act: 0
+        });
+
+        this.refs.myForm.reset();
+        this.refs.name.focus();
     }
+
+fRemove = (i) => {
+    let datas = this.state.datas;
+    datas.splice(i,1);
+    this.setState({
+        datas: datas
+    });
+
+    this.refs.myForm.reset();
+    this.refs.name.focus();
 }
 
-Post.propTypes = {
-    postContent: PropTypes.string
+fEdit = (i) => {
+    let data = this.state.datas[i];
+    this.refs.name.value = data.name;
+    this.refs.address.value = data.address;
+
+    this.setState({
+        act:1,
+        index:i
+    });
+
+    this.refs.name.focus();
+}
+
+    render() {
+        let datas = this.state.datas;
+        return(
+            <div className='App'>
+                <h2>{this.state.title}</h2>
+                <form ref='myForm' className='myForm'>
+                    <input type='text' ref='name' placeholder='título' className='formField' />
+                    <input type='text' ref='address' placeholder='mensaje' className='formField' />
+                    <button onClick={(e)=>this.fSubmit(e)} className='myButton'>Enviar</button>
+                </form>
+                <pre>
+                    {datas.map((data, i) =>
+                    <li key={i} className='myList'>
+                        {i+1}. {data.name}, {data.address}
+                        <button onClick={()=>this.fRemove(i)} className='myListButton'>eliminar</button>
+                        <button onClick={()=>this.fEdit(i)} className='myLIstButton'>editar</button>
+                    </li>
+                    )}
+                </pre>
+            </div>
+        );
+    }  
 }
 
 export default Post;
