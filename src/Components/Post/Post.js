@@ -36,7 +36,7 @@ class Post extends Component {
         let hora = HoraActual.getHours().toString(); // rescatamos la hora
         let minutos = HoraActual.getMinutes().toString(); // y los minutos
 
-        if (minutos < 10) { // cuando son las 15:06 el js muestra 15:6, este if es para que se vea el 0
+        if (minutos < 10) { 
             minutos = "0" + minutos;
         }
 
@@ -49,15 +49,18 @@ class Post extends Component {
                 publication, dia, month, year, hora, minutos
             }
             datas.unshift(data);
-
+            
+            
         } else {
             let index = this.state.index;
-            datas[index].publication = publication;
+            datas[index].publication = publication;   
         }
 
         this.setState({
             datas: datas
+            
         });
+        
 
         this.refs.formulario.reset();
 
