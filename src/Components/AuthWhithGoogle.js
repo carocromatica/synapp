@@ -30,15 +30,14 @@ renderLoginButtonG () {
   if (this.state.user) {
       return (
           <div>
-              <img width='100' src={this.state.user.photoURL} alt={this.state.user.displayName}/>
-              <p>Hola {this.state.user.displayName}!</p>
-              <button onClick={this.handleLogout}>Salir</button>
           </div>
       );
   }else{
       return(
       // si no está logueado
-      <button className="btn pink lighten-1 z-depth-0" onClick={this.handleAuthWithGoogle}>Login con Google</button>
+      <div className="signForm">
+      <button className="btn red darken-1" onClick={this.handleAuthWithGoogle}>Login con Google</button>
+      </div>
       );
   }
 }
@@ -47,12 +46,7 @@ renderLoginButtonG () {
   render() {
     return (
       <div className="App">
-        
-        <div className='holi'>
-        <h1>{this.state.users}</h1> 
         {this.renderLoginButtonG()}
-        </div>
-       
       </div>
     );
   }

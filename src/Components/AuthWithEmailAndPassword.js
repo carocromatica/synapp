@@ -46,14 +46,13 @@ renderLoginButtonE () {
   }else{
       return(
       // si no está logueado
-      <div>
+        <div>
           <form action="" className="white" >
-      <input type='email' id='email' placeholder='email'/>
-        <input type='password' id='password' placeholder='password'/>
-        
-        </form>
-        <button className="btn pink lighten-1 z-depth-0" onClick={this.handleAuthWithEmailAndPassword}>Ingresar</button>
-      </div>
+            <input type='email' id='email' placeholder='email' />
+            <input type='password' id='password' placeholder='Contraseña' />
+          </form>
+          <button className="btn teal darken-1" onClick={this.handleAuthWithEmailAndPassword}>Ingresar</button>
+        </div>
       );
   }
 }

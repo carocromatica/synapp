@@ -21,9 +21,17 @@ body {
   padding: 5px;
 }
 
+.logoSign{
+  padding: 20px;
+}
+
 .navIcons{
   font-size: 2em;
   margin-top:15px; 
+}
+
+.signForm{
+  padding: 20px;
 }
 
 .userNav {
