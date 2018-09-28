@@ -1,109 +1,115 @@
 import React, { Component } from 'react';
 import firebase from 'firebase';
-import 'firebase/auth'
-import 'firebase/firestore'
-import 'firebase/storage'
+import LikeButton from '../../Components/misc/Likes'
 
-class Post extends Component{
+class PostAEvent extends Component {
 
-   constructor(props) {
+    constructor(props) {
         super(props);
         this.state = {
-            act: 0,
             index: '',
             datas: []
         }
     }
-
     componentWillMount() {
         firebase.auth().onAuthStateChanged(user => {
-          this.setState({ user });
+            this.setState({ user });
         });
-      }
-    renderUser (){
-
-        if (this.state.user) {
-           return(
-              
-               <div>{this.state.user.displayName}</div>
-           )
-        };
-       
     }
-    fSubmit = (e) => {
+    renderUser() {
+        if (this.state.user) {
+            return (
+                <div>{this.state.user.displayName}</div>
+            )
+        };
+    }
+    addPost = (e) => {
         e.preventDefault();
         console.log('try');
 
         let datas = this.state.datas;
-        let name = this.refs.name.value;
-        let address = this.refs.address.value;
+        let publication = this.refs.publication.value;
+        var HoraActual = new Date();
+        let year = HoraActual.getFullYear().toString();
+        let month = HoraActual.getMonth().toString();
+        let dia = HoraActual.getDate().toString();
+        let hora = HoraActual.getHours().toString(); // rescatamos la hora
+        let minutos = HoraActual.getMinutes().toString(); // y los minutos
 
-        if(this.state.act === 0) {
+        if (minutos < 10) { 
+            minutos = "0" + minutos;
+        }
+
+        if (publication === "") {
+           return alert('escribe un mensaje')
+            
+        }
+
+        if (this.state) {
             let data = {
-                name, address
+                publication, dia, month, year, hora, minutos
             }
             datas.unshift(data);
-        }else{
+            
+            
+        } else {
             let index = this.state.index;
-            datas[index].name = name;
-            datas[index].address = address;
+            datas[index].publication = publication;   
         }
 
         this.setState({
-            datas: datas,
-            act: 0
+            datas: datas
+            
         });
+        
 
-        this.refs.myForm.reset();
+        this.refs.formulario.reset();
 
     }
 
-fRemove = (i) => {
-    let datas = this.state.datas;
-    datas.splice(i,1);
-    this.setState({
-        datas: datas
-    });
+    deletePost = (i) => {
+        let datas = this.state.datas;
+        datas.splice(i, 1);
+        this.setState({
+            datas: datas
+        });
 
-    this.refs.myForm.reset();
-
-}
-
-fEdit = (i) => {
-    let data = this.state.datas[i];
-    this.refs.name.value = data.name;
-    this.refs.address.value = data.address;
-
-    this.setState({
-        act:1,
-        index:i
-    });
-
-    this.refs.name.focus();
-}
-
+        this.refs.formulario.reset();
+    }
     render() {
         let datas = this.state.datas;
-        return(
-            <div className='App'>
-                <h2>{this.state.title}</h2>
-                <form ref='myForm' className='myForm'>
-                    <input type='text' ref='name' placeholder='título' className='formField' />
-                    <input type='text' ref='address' placeholder='mensaje' className='formField' />
-                    <button onClick={(e)=>this.fSubmit(e)} className='myButton'>Enviar</button>
-                </form>
-                <pre>
+        return (
+            <div>
+                <div className='card White'>
+                    <h2>{this.state.title}</h2>
+                    <form ref='formulario' className='signForm'>
+                        <input type='text' ref='publication' placeholder='¿Qué estás pensando?'/>
+                        <button onClick={(e) => this.addPost(e)} className='myButton'>Enviar</button>
+                    </form>
+                </div>
+                <div>
                     {datas.map((data, i) =>
-                    <li key={i} className='myList'>
-                         {data.name}, {data.address}
-                        <button onClick={()=>this.fRemove(i)} className='myListButton'>eliminar</button>
-                        <button onClick={()=>this.fEdit(i)} className='myLIstButton'>editar</button>
-                    </li>
+                        <div key={i} className="card white signForm">
+                            <div className="card-title">
+                                Carolina Torres Durán
+                            </div>
+                            <div className="postdate"> {data.dia}/ {data.month} /{data.year} a las {data.hora}:{data.minutos}</div>
+                            <div className="postcontent"> {data.publication}</div>
+                            <div className="row">
+                            <hr />
+                                <div className="col s6">
+                                    <LikeButton />
+                                </div>
+                                <div className="col s6 right-align">
+                                    <button onClick={() => this.deletePost(i)}><i class="far fa-trash-alt"></i></button>
+                                </div>
+                            </div>
+                        </div>
                     )}
-                </pre>
+                </div>
             </div>
         );
-    }  
+    }
 }
 
-export default Post;
+export default PostAEvent;

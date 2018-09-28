@@ -41,7 +41,7 @@ class Post extends Component {
         }
 
         if (publication === "") {
-            alert('escribe un mensaje')
+            return alert('Este campo no puede estar vacío')
         }
 
         if (this.state) {
