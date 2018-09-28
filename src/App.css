@@ -26,7 +26,8 @@ body {
   /* background-position: bottom; */
   background-color: #95e8f3;
   min-height: 100%;
-  background: url(/img/synapse03.png) no-repeat;
+  background: url(/fondo.jpg) no-repeat;
+  background-image: url(/fondo.jpg);
 }
 
 form{
