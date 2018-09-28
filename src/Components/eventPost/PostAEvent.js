@@ -6,7 +6,8 @@ class PostAEvent extends Component {
     return(
 
       <div>
-      
+
+      <p>soy formulario eventos</p>
 
       </div>
       
